@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "../reducer";
+import "antd/dist/antd.css";
 
 // create redux store
 const store = createStore(rootReducer, composeWithDevTools());

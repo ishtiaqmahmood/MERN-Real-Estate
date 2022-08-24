@@ -22,21 +22,28 @@ const TopNav = () => {
         <a className="text-decoration-none">Home</a>
       </Link>
       {auth !== null && (
-        <>
-          <a className=" nav-link pointer" onClick={logout}>
+        <div>
+          <Link className="nav-link" href="/dashboard">
+            <a className="text-decoration-none">dashboard</a>
+          </Link>
+        </div>
+      )}
+      {auth !== null && (
+        <div>
+          <div className=" nav-link pointer" onClick={logout}>
             <a className="text-decoration-none">Logout</a>
-          </a>
-        </>
+          </div>
+        </div>
       )}
       {auth === null && (
-        <>
+        <div>
           <Link className="nav-link" href="/login">
             <a className="text-decoration-none">Login</a>
           </Link>
           <Link className="nav-link" href="/register">
             <a className="text-decoration-none">Register</a>
           </Link>
-        </>
+        </div>
       )}
     </div>
   );

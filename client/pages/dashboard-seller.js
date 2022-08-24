@@ -6,7 +6,7 @@ import TopNav from "../components/TopNav";
 import DashboardNav from "../components/DashboardNav";
 import ConnectNav from "../components/ConnectNav";
 
-const dashboard = () => {
+const seller = () => {
   const { auth } = useSelector((state) => ({ ...state }));
   const { user } = auth;
 
@@ -26,11 +26,11 @@ const dashboard = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-10">
-            <h2>Houses</h2>
+            <h2>Your Houses</h2>
           </div>
           <div className="col-md-2">
-            <Link href="/">
-              <button className="btn btn-primary">Browse Houses</button>
+            <Link href="/hotels">
+              <button className="btn btn-primary">+ Add New</button>
             </Link>
           </div>
         </div>
@@ -39,4 +39,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default seller;
