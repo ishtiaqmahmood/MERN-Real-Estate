@@ -10,10 +10,18 @@ const dashboard = () => {
   const { auth } = useSelector((state) => ({ ...state }));
   const { user } = auth;
 
-  useEffect(() => {
-    if (!user) Router.push("/");
-  }, [user]);
+  const ProtectedRoute = () => {
+    if (typeof window !== "undefined") {
+      const item = localStorage.getItem("token");
+      if (!item) {
+        return Router.push("/");
+      }
+    }
+  };
 
+  useEffect(() => {
+    ProtectedRoute();
+  }, []);
   return (
     <>
       <TopNav />

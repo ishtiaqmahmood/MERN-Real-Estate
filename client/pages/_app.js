@@ -4,18 +4,23 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "../reducer";
+import persistedReducer from "../reducer";
 import "antd/dist/antd.css";
 
 // create redux store
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(persistedReducer, composeWithDevTools());
+let persistor = persistStore(store);
 
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
-      <ToastContainer />
+      <PersistGate loading={null} persistor={persistor}>
+        <Component {...pageProps} />
+        <ToastContainer />
+      </PersistGate>
     </Provider>
   );
 }
